@@ -116,6 +116,8 @@
 		3BC9A5091BEA7CF90030F38C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3BC9A5221BEA7E700030F38C /* libz.tbd */,
+				3BC9A5201BEA7E560030F38C /* libsqlite3.tbd */,
 				3BC9A51E1BEA7E160030F38C /* SystemConfiguration.framework */,
 				3BC9A51C1BEA7E0E0030F38C /* StoreKit.framework */,
 				3BC9A51A1BEA7DFF0030F38C /* Security.framework */,
@@ -135,8 +137,6 @@
 			isa = PBXGroup;
 			children = (
 				3BC9A5091BEA7CF90030F38C /* Frameworks */,
-				3BC9A5221BEA7E700030F38C /* libz.tbd */,
-				3BC9A5201BEA7E560030F38C /* libsqlite3.tbd */,
 				3BFB46A41BE9C63B0038D9DD /* MatchingFriendsParseSwift */,
 				3BFB46B91BE9C63D0038D9DD /* MatchingFriendsParseSwiftTests */,
 				3BFB46C41BE9C63D0038D9DD /* MatchingFriendsParseSwiftUITests */,

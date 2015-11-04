@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import FBSDKCoreKit
 import FBSDKLoginKit
 
 class ViewController: UIViewController, FBSDKLoginButtonDelegate {
@@ -15,6 +14,16 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        if ((FBSDKAccessToken.currentAccessToken()) == nil){
+            print("Not logged in..")
+            
+        }else{
+            print("Logged in..")
+            
+            self.performSegueWithIdentifier("FriendFBSegue", sender: nil)
+            
+        }
         
         let loginButton = FBSDKLoginButton()
         loginButton.delegate = self //important!
@@ -50,7 +59,7 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
         else {
             // Navigate to other view
             print("logIN")
-            
+            self.performSegueWithIdentifier("FriendFBSegue", sender: nil)
         }
     }
     

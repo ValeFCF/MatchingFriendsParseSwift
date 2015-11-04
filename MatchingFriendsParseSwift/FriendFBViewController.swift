@@ -21,6 +21,10 @@ class FriendFBViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    @IBAction func addFriend(sender: AnyObject) {
+        print("click")
+    }
 
     // MARK: - Table view data source
 
@@ -57,6 +61,9 @@ class FriendFBViewController: UITableViewController {
                 
                 let nameFBfriend = cell.viewWithTag(2) as! UILabel
                 nameFBfriend.text = nameFriend
+                
+                let buttonFBfriend = cell.viewWithTag(3) as! UIButton
+                buttonFBfriend.setTitle("follow", forState: UIControlState.Normal) //or .Normal
                 
             } else {
                 print("Error: \(error.localizedDescription)")

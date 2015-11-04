@@ -79,5 +79,10 @@
         </dict>
     </dict>
     
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+        <string>fbauth2</string>
+    </array>
+    
 </dict>
 </plist>

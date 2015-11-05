@@ -10,11 +10,60 @@ import UIKit
 import FBSDKCoreKit
 
 class FriendFBViewController: UITableViewController {
-
+    
+    var idFriends: [String] = []
+    var nameFriends: [String] = []
+    var pictureFriends: [String] = []
+    var numFriends = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
+        FBSDKGraphRequest.init(graphPath: "me/friends", parameters: [ "fields": "id, name, picture.type(large){url}" ] ).startWithCompletionHandler({ (connection, results, error) -> Void in
+            
+            if error == nil {
+                
+                print("count= \(results.count)")
+                
+                if results.count > 0 {
+                    
+                    let data = results as! NSDictionary
+                    
+                    for result in 0 ... (results.count - 1) {
+                        
+                        let idFriend = data["data"]![ result ]["id"] as! String
+                        let nameFriend = data["data"]![ result ]["name"] as! String
+                        let pictureFriend = data["data"]![ result ]["picture"]!!["data"]!!["url"] as! String
+                        
+                        //print(idFriend)
+                        //print(nameFriend)
+                        //print(picData)
+                        
+                        self.idFriends.append( idFriend )
+                        self.nameFriends.append( nameFriend )
+                        self.pictureFriends.append( pictureFriend )
+                    }
+                }
+                
+                self.numFriends = self.idFriends.count
+                
+                self.tableView.reloadData()
+                
+            } else {
+                print("Error: \(error.localizedDescription)")
+            }
+        })
+        
+        
+        
+    }
+    
+    func actualizarTableView() -> Void {
+        
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            
+            
+        })
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,52 +91,33 @@ class FriendFBViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
+        
         return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 1
+        
+        return self.idFriends.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("FriendCell", forIndexPath: indexPath)
-
+        
         // Configure the cell...
-        FBSDKGraphRequest.init(graphPath: "me/friends", parameters: [ "fields": "id, name, picture.type(large){url}" ] ).startWithCompletionHandler({ (connection, result, error) -> Void in
-            
-            if error == nil {
-                
-                let data = result as! NSDictionary
-                let idFriend = data["data"]![0]["id"] as! String
-                let nameFriend = data["data"]![0]["name"] as! String
-                let pictureFriend = data["data"]![0]["picture"]!!["data"]!!["url"] as! String
-                
-                let url = NSURL(string: pictureFriend)
-                let picData = NSData(contentsOfURL: url!)
-                
-                print(idFriend)
-                print(nameFriend)
-                //print(picData)
-                
-                let imageViewP = cell.viewWithTag(1) as! UIImageView
-                imageViewP.image = UIImage(data: picData!)
-                
-                let nameFBfriend = cell.viewWithTag(2) as! UILabel
-                nameFBfriend.text = nameFriend
-                
-                let buttonFBfriend = cell.viewWithTag(3) as! MyButtonID
-                buttonFBfriend.setTitle("follow", forState: UIControlState.Normal)
-                buttonFBfriend.idFriendFB = idFriend
-                
-                
-            } else {
-                print("Error: \(error.localizedDescription)")
-            }
-            
-        })
-
+        
+        let url = NSURL(string: self.pictureFriends[ indexPath.row ] )
+        let picData = NSData(contentsOfURL: url!)
+        
+        let imageViewP = cell.viewWithTag(1) as! UIImageView
+        imageViewP.image = UIImage(data: picData!)
+        
+        let nameFBfriend = cell.viewWithTag(2) as! UILabel
+        nameFBfriend.text = self.nameFriends[ indexPath.row ]
+        
+        let buttonFBfriend = cell.viewWithTag(3) as! MyButtonID
+        buttonFBfriend.setTitle("follow", forState: UIControlState.Normal)
+        buttonFBfriend.idFriendFB = self.idFriends[ indexPath.row ]
+        
         return cell
     }
 

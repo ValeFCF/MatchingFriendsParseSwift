@@ -52,9 +52,11 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
         
         if error != nil {
             // Process error
+            print("error Login")
         }
         else if result.isCancelled {
             // Handle cancellations
+            print("isCancelled Login")
         }
         else {
             // Navigate to other view

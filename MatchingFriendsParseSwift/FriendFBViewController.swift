@@ -22,8 +22,21 @@ class FriendFBViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func addFriend(sender: AnyObject) {
-        print("click")
+    @IBAction func addFriend(sender: MyButtonID) {
+        
+        print(sender.titleLabel!.text)
+        print( sender.idFriendFB )
+        
+        if sender.titleLabel!.text == "follow" {
+            
+            sender.setTitle("unfollow", forState: UIControlState.Normal) //or .Normal
+            
+        } else if sender.titleLabel!.text == "unfollow" {
+            
+            sender.setTitle("follow", forState: UIControlState.Normal)
+        }
+        
+        
     }
 
     // MARK: - Table view data source
@@ -47,12 +60,14 @@ class FriendFBViewController: UITableViewController {
             if error == nil {
                 
                 let data = result as! NSDictionary
+                let idFriend = data["data"]![0]["id"] as! String
                 let nameFriend = data["data"]![0]["name"] as! String
                 let pictureFriend = data["data"]![0]["picture"]!!["data"]!!["url"] as! String
                 
                 let url = NSURL(string: pictureFriend)
                 let picData = NSData(contentsOfURL: url!)
                 
+                print(idFriend)
                 print(nameFriend)
                 //print(picData)
                 
@@ -62,8 +77,10 @@ class FriendFBViewController: UITableViewController {
                 let nameFBfriend = cell.viewWithTag(2) as! UILabel
                 nameFBfriend.text = nameFriend
                 
-                let buttonFBfriend = cell.viewWithTag(3) as! UIButton
-                buttonFBfriend.setTitle("follow", forState: UIControlState.Normal) //or .Normal
+                let buttonFBfriend = cell.viewWithTag(3) as! MyButtonID
+                buttonFBfriend.setTitle("follow", forState: UIControlState.Normal)
+                buttonFBfriend.idFriendFB = idFriend
+                
                 
             } else {
                 print("Error: \(error.localizedDescription)")

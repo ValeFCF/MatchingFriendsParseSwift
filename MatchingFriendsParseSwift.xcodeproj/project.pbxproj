@@ -23,6 +23,7 @@
 		3BC9A52D1BEA93260030F38C /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BC9A52C1BEA93260030F38C /* FBSDKCoreKit.framework */; };
 		3BC9A52F1BEA97280030F38C /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BC9A52E1BEA97280030F38C /* FBSDKLoginKit.framework */; };
 		3BC9A5371BEAB6F10030F38C /* FriendFBViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC9A5361BEAB6F10030F38C /* FriendFBViewController.swift */; };
+		3BC9A5391BEACF5A0030F38C /* MyButtonID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC9A5381BEACF5A0030F38C /* MyButtonID.swift */; };
 		3BFB46A61BE9C63B0038D9DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFB46A51BE9C63B0038D9DD /* AppDelegate.swift */; };
 		3BFB46A81BE9C63B0038D9DD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFB46A71BE9C63B0038D9DD /* ViewController.swift */; };
 		3BFB46AB1BE9C63C0038D9DD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BFB46A91BE9C63C0038D9DD /* Main.storyboard */; };
@@ -66,6 +67,7 @@
 		3BC9A52C1BEA93260030F38C /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		3BC9A52E1BEA97280030F38C /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		3BC9A5361BEAB6F10030F38C /* FriendFBViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendFBViewController.swift; sourceTree = "<group>"; };
+		3BC9A5381BEACF5A0030F38C /* MyButtonID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyButtonID.swift; sourceTree = "<group>"; };
 		3BFB46A21BE9C63B0038D9DD /* MatchingFriendsParseSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MatchingFriendsParseSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BFB46A51BE9C63B0038D9DD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3BFB46A71BE9C63B0038D9DD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 				3BFB46A71BE9C63B0038D9DD /* ViewController.swift */,
 				3BC9A5361BEAB6F10030F38C /* FriendFBViewController.swift */,
 				3BFB46A91BE9C63C0038D9DD /* Main.storyboard */,
+				3BC9A5381BEACF5A0030F38C /* MyButtonID.swift */,
 				3BFB46AC1BE9C63C0038D9DD /* Assets.xcassets */,
 				3BFB46AE1BE9C63C0038D9DD /* LaunchScreen.storyboard */,
 				3BFB46B11BE9C63C0038D9DD /* Info.plist */,
@@ -330,6 +333,7 @@
 			files = (
 				3BFB46A81BE9C63B0038D9DD /* ViewController.swift in Sources */,
 				3BFB46A61BE9C63B0038D9DD /* AppDelegate.swift in Sources */,
+				3BC9A5391BEACF5A0030F38C /* MyButtonID.swift in Sources */,
 				3BC9A5371BEAB6F10030F38C /* FriendFBViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

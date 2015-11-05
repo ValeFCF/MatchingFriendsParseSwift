@@ -15,6 +15,7 @@ class FriendFBViewController: UITableViewController {
     var nameFriends: [String] = []
     var pictureFriends: [String] = []
     var numFriends = 0
+    var methodsParse = MyParseMethods()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +24,7 @@ class FriendFBViewController: UITableViewController {
             
             if error == nil {
                 
-                print("count= \(results.count)")
+                //print("count= \(results.count)")
                 
                 if results.count > 0 {
                     
@@ -57,14 +58,6 @@ class FriendFBViewController: UITableViewController {
         
         
     }
-    
-    func actualizarTableView() -> Void {
-        
-        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-            
-            
-        })
-    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -77,12 +70,17 @@ class FriendFBViewController: UITableViewController {
         print( sender.idFriendFB )
         
         if sender.titleLabel!.text == "follow" {
-            
+
+            self.methodsParse.updatingIDFriends( sender.idFriendFB )
+    
             sender.setTitle("unfollow", forState: UIControlState.Normal) //or .Normal
             
         } else if sender.titleLabel!.text == "unfollow" {
             
+            self.methodsParse.deletingIDFriends( sender.idFriendFB )
+            
             sender.setTitle("follow", forState: UIControlState.Normal)
+            
         }
         
         

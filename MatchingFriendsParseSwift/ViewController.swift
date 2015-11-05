@@ -8,6 +8,7 @@
 
 import UIKit
 import FBSDKLoginKit
+import Parse
 
 class ViewController: UIViewController, FBSDKLoginButtonDelegate {
 
@@ -20,6 +21,7 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
             
         }else{
             print("Logged in..")
+            //print("current: \(FBSDKAccessToken.currentAccessToken().userID)")
             
             self.performSegueWithIdentifier("FriendFBSegue", sender: nil)
             
@@ -30,14 +32,6 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
         loginButton.center = self.view.center
         loginButton.readPermissions =  ["user_friends"]
         self.view.addSubview(loginButton)
-        
-        /*
-        let testObject = PFObject(className: "TestObject")
-        testObject["foo"] = "bar"
-        testObject.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
-            print("Object has been saved.")
-        }
-        */
 
     }
 
@@ -61,7 +55,22 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
         else {
             // Navigate to other view
             print("logIN")
-            self.performSegueWithIdentifier("FriendFBSegue", sender: nil)
+            
+            let userObject = PFObject(className: "User")
+            userObject["userID"] = result.token.userID
+            userObject.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
+                
+                if error == nil {
+                    //print("objectID = \(userObject.objectId)")
+                    self.performSegueWithIdentifier("FriendFBSegue", sender: nil)
+                } else {
+                    
+                }
+               
+                
+            }
+            
+            
         }
     }
     

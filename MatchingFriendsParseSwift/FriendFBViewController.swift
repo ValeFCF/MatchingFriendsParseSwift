@@ -43,6 +43,7 @@ class FriendFBViewController: UITableViewController {
                         self.idFriends.append( idFriend )
                         self.nameFriends.append( nameFriend )
                         self.pictureFriends.append( pictureFriend )
+                        
                     }
                 }
                 
@@ -54,7 +55,6 @@ class FriendFBViewController: UITableViewController {
                 print("Error: \(error.localizedDescription)")
             }
         })
-        
         
         
     }
@@ -82,7 +82,6 @@ class FriendFBViewController: UITableViewController {
             sender.setTitle("follow", forState: UIControlState.Normal)
             
         }
-        
         
     }
 
@@ -113,7 +112,22 @@ class FriendFBViewController: UITableViewController {
         nameFBfriend.text = self.nameFriends[ indexPath.row ]
         
         let buttonFBfriend = cell.viewWithTag(3) as! MyButtonID
-        buttonFBfriend.setTitle("follow", forState: UIControlState.Normal)
+        
+        
+        //Completion Handler
+        self.methodsParse.buttonsOfFriendsFollow( self.idFriends[ indexPath.row ] , completion: { (resultButton) -> Void in
+            
+            if resultButton == true {
+                print("not working")
+                buttonFBfriend.setTitle("unfollow", forState: UIControlState.Normal)
+            }else {
+                print("working")
+                buttonFBfriend.setTitle("follow", forState: UIControlState.Normal)
+            }
+            
+        })
+
+        
         buttonFBfriend.idFriendFB = self.idFriends[ indexPath.row ]
         
         return cell

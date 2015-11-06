@@ -28,10 +28,10 @@
             </objects>
             <point key="canvasLocation" x="1049" y="299"/>
         </scene>
-        <!--Item 1-->
+        <!--Invitations-->
         <scene sceneID="SRW-0f-5bS">
             <objects>
-                <viewController id="huS-Ff-Wmf" sceneMemberID="viewController">
+                <viewController title="Invitations" id="huS-Ff-Wmf" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="RdW-nX-n6j"/>
                         <viewControllerLayoutGuide type="bottom" id="Md2-7W-KAf"/>
@@ -39,10 +39,52 @@
                     <view key="view" contentMode="scaleToFill" id="qdk-h1-SAS">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="91" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tdX-OD-O5a">
+                                <rect key="frame" x="0.0" y="20" width="600" height="531"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FriendInviteCell" rowHeight="97" id="aJo-5C-Aa7">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="97"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aJo-5C-Aa7" id="efZ-Yk-9o6">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="96"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QFX-Hh-g4A">
+                                                    <rect key="frame" x="8" y="8" width="87" height="80"/>
+                                                    <animations/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name Friend" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zxF-Kp-gqv">
+                                                    <rect key="frame" x="110" y="37" width="125" height="21"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jd8-KJ-jls">
+                                                    <rect key="frame" x="255" y="13" width="64" height="30"/>
+                                                    <animations/>
+                                                    <state key="normal" title="accept"/>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TZp-9E-X9s">
+                                                    <rect key="frame" x="255" y="51" width="64" height="30"/>
+                                                    <animations/>
+                                                    <state key="normal" title="refuse"/>
+                                                </button>
+                                            </subviews>
+                                            <animations/>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="XJE-DW-klY"/>
+                    <tabBarItem key="tabBarItem" systemItem="recents" id="XJE-DW-klY"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uR4-My-64o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -67,10 +109,10 @@
             </objects>
             <point key="canvasLocation" x="1049" y="1029"/>
         </scene>
-        <!--Item-->
+        <!--Friends-->
         <scene sceneID="uQg-N1-T2Q">
             <objects>
-                <tableViewController id="pXC-Z1-sQk" customClass="FriendFBViewController" customModule="MatchingFriendsParseSwift" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Friends" id="pXC-Z1-sQk" customClass="FriendFBViewController" customModule="MatchingFriendsParseSwift" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="97" sectionHeaderHeight="28" sectionFooterHeight="28" id="hlK-ze-Jvs">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -88,7 +130,7 @@
                                             <rect key="frame" x="8" y="8" width="87" height="80"/>
                                             <animations/>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aMD-6D-xed">
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name Friend" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aMD-6D-xed">
                                             <rect key="frame" x="110" y="37" width="125" height="21"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -114,7 +156,7 @@
                             <outlet property="delegate" destination="pXC-Z1-sQk" id="ALv-ow-AEd"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Item" id="IPF-He-ypJ"/>
+                    <tabBarItem key="tabBarItem" systemItem="contacts" id="IPF-He-ypJ"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IaE-Bu-IRv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -30,9 +30,11 @@ class MyParseMethods {
 
     }
     
-    func updatingIDFriends( objectUpdating: String ) {
+    func updatingRequestFriends( objectUpdating: String ) {
         
         let query = PFQuery(className:"User")
+        
+        // query add request to friend
         query.whereKey("userID", equalTo: FBSDKAccessToken.currentAccessToken().userID )
         query.getFirstObjectInBackgroundWithBlock({ (userObject: PFObject?, error: NSError?) -> Void in
             
@@ -40,14 +42,37 @@ class MyParseMethods {
                 print(error?.localizedDescription)
             } else if let userObject = userObject {
                 
-                userObject.addObject( objectUpdating , forKey: "idFriendsFB")
-                userObject.saveInBackground()
+                userObject.addObject( objectUpdating , forKey: "requestFriend")
+                userObject.saveInBackgroundWithBlock({ (result: Bool, error: NSError?) -> Void in
+                    
+                    if error != nil {
+                        print("error RequestFriend == \(error?.localizedDescription)")
+                    }else {
+                        
+                        // query add invite from friend
+                        query.whereKey("userID", equalTo: objectUpdating )
+                        query.getFirstObjectInBackgroundWithBlock({ (friendObject: PFObject?, error: NSError?) -> Void in
+                            
+                            if error != nil {
+                                print(error?.localizedDescription)
+                            }else {
+                                
+                                friendObject!.addObject(FBSDKAccessToken.currentAccessToken().userID, forKey: "inviteFriend")
+                                friendObject!.saveInBackground()
+                                // we can separate the method
+                            }
+                            
+                        })
+                    }
+                    
+                })
+                
             }
             
         })
     }
     
-    func deletingIDFriends( objectDeleting: String ){
+    func deletingIDFriends( objectDeleting: String, kindDeleting: String ){
         
         let query = PFQuery(className:"User")
         query.whereKey("userID", equalTo: FBSDKAccessToken.currentAccessToken().userID )
@@ -57,7 +82,13 @@ class MyParseMethods {
                 print(error?.localizedDescription)
             } else if let userObject = userObject {
                 
-                userObject.removeObject( objectDeleting , forKey: "idFriendsFB")
+                if kindDeleting == "unfollow" {
+                    userObject.removeObject( objectDeleting , forKey: "idFriendsFB")
+                }else {
+                    userObject.removeObject( objectDeleting , forKey: "requestFriend")
+                    //code user2
+                }
+                
                 userObject.saveInBackground()
             }
             

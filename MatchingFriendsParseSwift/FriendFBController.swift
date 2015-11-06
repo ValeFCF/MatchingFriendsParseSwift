@@ -71,13 +71,13 @@ class FriendFBController: UITableViewController {
         
         if sender.titleLabel!.text == "follow" {
 
-            self.methodsParse.updatingIDFriends( sender.idFriendFB )
+            self.methodsParse.updatingRequestFriends( sender.idFriendFB )
     
-            sender.setTitle("unfollow", forState: UIControlState.Normal) //or .Normal
+            sender.setTitle("pending", forState: UIControlState.Normal) //or .Normal
             
-        } else if sender.titleLabel!.text == "unfollow" {
+        } else {
             
-            self.methodsParse.deletingIDFriends( sender.idFriendFB )
+            self.methodsParse.deletingIDFriends( sender.idFriendFB, kindDeleting: sender.titleLabel!.text! )
             
             sender.setTitle("follow", forState: UIControlState.Normal)
             

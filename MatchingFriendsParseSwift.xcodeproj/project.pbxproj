@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B7395C41BED6128009281CC /* FriendInvitationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7395C31BED6128009281CC /* FriendInvitationController.swift */; };
 		3B85BC321BEBCA4B00D45082 /* MyParseMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B85BC311BEBCA4A00D45082 /* MyParseMethods.swift */; };
 		3B85BC351BEC227F00D45082 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B85BC331BEC227E00D45082 /* FBSDKCoreKit.framework */; };
 		3B85BC361BEC227F00D45082 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B85BC341BEC227F00D45082 /* FBSDKLoginKit.framework */; };
@@ -23,7 +24,7 @@
 		3BC9A51F1BEA7E160030F38C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BC9A51E1BEA7E160030F38C /* SystemConfiguration.framework */; };
 		3BC9A5211BEA7E560030F38C /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BC9A5201BEA7E560030F38C /* libsqlite3.tbd */; };
 		3BC9A5231BEA7E700030F38C /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BC9A5221BEA7E700030F38C /* libz.tbd */; };
-		3BC9A5371BEAB6F10030F38C /* FriendFBViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC9A5361BEAB6F10030F38C /* FriendFBViewController.swift */; };
+		3BC9A5371BEAB6F10030F38C /* FriendFBController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC9A5361BEAB6F10030F38C /* FriendFBController.swift */; };
 		3BC9A5391BEACF5A0030F38C /* MyButtonID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC9A5381BEACF5A0030F38C /* MyButtonID.swift */; };
 		3BFB46A61BE9C63B0038D9DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFB46A51BE9C63B0038D9DD /* AppDelegate.swift */; };
 		3BFB46A81BE9C63B0038D9DD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFB46A71BE9C63B0038D9DD /* ViewController.swift */; };
@@ -52,6 +53,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3B7395C31BED6128009281CC /* FriendInvitationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendInvitationController.swift; sourceTree = "<group>"; };
 		3B85BC311BEBCA4A00D45082 /* MyParseMethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyParseMethods.swift; sourceTree = "<group>"; };
 		3B85BC331BEC227E00D45082 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		3B85BC341BEC227F00D45082 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
@@ -68,7 +70,7 @@
 		3BC9A51E1BEA7E160030F38C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		3BC9A5201BEA7E560030F38C /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		3BC9A5221BEA7E700030F38C /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
-		3BC9A5361BEAB6F10030F38C /* FriendFBViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendFBViewController.swift; sourceTree = "<group>"; };
+		3BC9A5361BEAB6F10030F38C /* FriendFBController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendFBController.swift; sourceTree = "<group>"; };
 		3BC9A5381BEACF5A0030F38C /* MyButtonID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyButtonID.swift; sourceTree = "<group>"; };
 		3BFB46A21BE9C63B0038D9DD /* MatchingFriendsParseSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MatchingFriendsParseSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BFB46A51BE9C63B0038D9DD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -173,7 +175,8 @@
 			children = (
 				3BFB46A51BE9C63B0038D9DD /* AppDelegate.swift */,
 				3BFB46A71BE9C63B0038D9DD /* ViewController.swift */,
-				3BC9A5361BEAB6F10030F38C /* FriendFBViewController.swift */,
+				3BC9A5361BEAB6F10030F38C /* FriendFBController.swift */,
+				3B7395C31BED6128009281CC /* FriendInvitationController.swift */,
 				3BFB46A91BE9C63C0038D9DD /* Main.storyboard */,
 				3B85BC311BEBCA4A00D45082 /* MyParseMethods.swift */,
 				3BC9A5381BEACF5A0030F38C /* MyButtonID.swift */,
@@ -336,9 +339,10 @@
 			files = (
 				3BFB46A81BE9C63B0038D9DD /* ViewController.swift in Sources */,
 				3B85BC321BEBCA4B00D45082 /* MyParseMethods.swift in Sources */,
+				3B7395C41BED6128009281CC /* FriendInvitationController.swift in Sources */,
 				3BFB46A61BE9C63B0038D9DD /* AppDelegate.swift in Sources */,
 				3BC9A5391BEACF5A0030F38C /* MyButtonID.swift in Sources */,
-				3BC9A5371BEAB6F10030F38C /* FriendFBViewController.swift in Sources */,
+				3BC9A5371BEAB6F10030F38C /* FriendFBController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

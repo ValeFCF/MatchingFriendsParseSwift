@@ -9,7 +9,7 @@
 import UIKit
 import FBSDKCoreKit
 
-class FriendFBViewController: UITableViewController {
+class FriendFBController: UITableViewController {
     
     var idFriends: [String] = []
     var nameFriends: [String] = []

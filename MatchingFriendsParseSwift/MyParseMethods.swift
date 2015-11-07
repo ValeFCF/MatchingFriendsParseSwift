@@ -12,7 +12,9 @@ import FBSDKCoreKit
 class MyParseMethods {
 
     //completionHandler
-    func buttonsOfFriendsFollow( objectSearch: String, completion: (resultButton: Bool) -> Void){
+    func buttonsOfFriendsFollow( objectSearch: String, completion: (resultButton: Int) -> Void){
+        
+        // where 1 = follow, 2 = pending, 3 = unfollow
         
         let query = PFQuery(className:"User")
         query.whereKey("userID", equalTo: FBSDKAccessToken.currentAccessToken().userID )
@@ -20,11 +22,25 @@ class MyParseMethods {
         query.getFirstObjectInBackgroundWithBlock({ (userObject: PFObject?, error: NSError?) -> Void in
             
             if error != nil {
-                print("errorrrrr == \(error?.localizedDescription)")
-                completion( resultButton: false)
+                print("error  == \(error?.localizedDescription)")
+                
+                let queryRequest = PFQuery(className:"User")
+                queryRequest.whereKey("userID", equalTo: FBSDKAccessToken.currentAccessToken().userID )
+                queryRequest.whereKey("requestFriend", containedIn: [ objectSearch ])
+                queryRequest.getFirstObjectInBackgroundWithBlock({ (uObject: PFObject?, error: NSError?) -> Void in
+                    
+                    if error != nil {
+                        completion( resultButton: 1)
+                    }else {
+                        
+                        completion( resultButton: 2)
+                    }
+                    
+                })
+                
             }else {
-                //print(userObject)
-                completion(resultButton: true)
+                print(userObject)
+                completion(resultButton: 3)
             }
         })
 

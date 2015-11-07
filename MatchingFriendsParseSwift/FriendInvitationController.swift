@@ -9,7 +9,10 @@
 import UIKit
 
 class FriendInvitationController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+    
+    var numOfInvites = 0
+    var methodsParse = MyParseMethods()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

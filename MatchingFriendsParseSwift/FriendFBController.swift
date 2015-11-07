@@ -117,12 +117,14 @@ class FriendFBController: UITableViewController {
         //Completion Handler
         self.methodsParse.buttonsOfFriendsFollow( self.idFriends[ indexPath.row ] , completion: { (resultButton) -> Void in
             
-            if resultButton == true {
-                print("not working")
-                buttonFBfriend.setTitle("unfollow", forState: UIControlState.Normal)
-            }else {
-                print("working")
+            if resultButton == 1 {
                 buttonFBfriend.setTitle("follow", forState: UIControlState.Normal)
+                
+            }else if resultButton == 2 {
+                buttonFBfriend.setTitle("pending", forState: UIControlState.Normal)
+                
+            }else if resultButton == 3 {
+                buttonFBfriend.setTitle("unfollow", forState: UIControlState.Normal)
             }
             
         })

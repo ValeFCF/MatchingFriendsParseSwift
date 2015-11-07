@@ -10,41 +10,6 @@ import Parse
 import FBSDKCoreKit
 
 class MyParseMethods {
-
-    //completionHandler
-    func buttonsOfFriendsFollow( objectSearch: String, completion: (resultButton: Int) -> Void){
-        
-        // where 1 = follow, 2 = pending, 3 = unfollow
-        
-        let query = PFQuery(className:"User")
-        query.whereKey("userID", equalTo: FBSDKAccessToken.currentAccessToken().userID )
-        query.whereKey("idFriendsFB", containedIn: [ objectSearch ])
-        query.getFirstObjectInBackgroundWithBlock({ (userObject: PFObject?, error: NSError?) -> Void in
-            
-            if error != nil {
-                print("error  == \(error?.localizedDescription)")
-                
-                let queryRequest = PFQuery(className:"User")
-                queryRequest.whereKey("userID", equalTo: FBSDKAccessToken.currentAccessToken().userID )
-                queryRequest.whereKey("requestFriend", containedIn: [ objectSearch ])
-                queryRequest.getFirstObjectInBackgroundWithBlock({ (uObject: PFObject?, error: NSError?) -> Void in
-                    
-                    if error != nil {
-                        completion( resultButton: 1)
-                    }else {
-                        
-                        completion( resultButton: 2)
-                    }
-                    
-                })
-                
-            }else {
-                print(userObject)
-                completion(resultButton: 3)
-            }
-        })
-
-    }
     
     func updatingRequestFriends( objectUpdating: String ) {
         
@@ -111,6 +76,62 @@ class MyParseMethods {
         })
     }
     
+    //MARK: - Completion Handler
+    
+    func buttonsOfFriendsFollow( objectSearch: String, completion: (resultButton: Int) -> Void){
+        
+        // where 1 = follow, 2 = pending, 3 = unfollow
+        
+        let query = PFQuery(className:"User")
+        query.whereKey("userID", equalTo: FBSDKAccessToken.currentAccessToken().userID )
+        query.whereKey("idFriendsFB", containedIn: [ objectSearch ])
+        query.getFirstObjectInBackgroundWithBlock({ (userObject: PFObject?, error: NSError?) -> Void in
+            
+            if error != nil {
+                print("error  == \(error?.localizedDescription)")
+                
+                let queryRequest = PFQuery(className:"User")
+                queryRequest.whereKey("userID", equalTo: FBSDKAccessToken.currentAccessToken().userID )
+                queryRequest.whereKey("requestFriend", containedIn: [ objectSearch ])
+                queryRequest.getFirstObjectInBackgroundWithBlock({ (uObject: PFObject?, error: NSError?) -> Void in
+                    
+                    if error != nil {
+                        completion( resultButton: 1)
+                    }else {
+                        
+                        completion( resultButton: 2)
+                    }
+                    
+                })
+                
+            }else {
+                print(userObject)
+                completion(resultButton: 3)
+            }
+        })
+        
+    }
+    
+    func getFriends( completion: (resultArray: [String]) -> Void) {
+        
+        var friendInvitations: [String] = []
+        
+        let query = PFQuery(className:"User")
+        query.whereKey("userID", equalTo: FBSDKAccessToken.currentAccessToken().userID )
+        query.getFirstObjectInBackgroundWithBlock { (userObject: PFObject?, error: NSError?) -> Void in
+            
+            if error != nil {
+                print(error?.localizedDescription)
+            }else {
+                
+                friendInvitations = userObject!["inviteFriend"] as! [String]
+                
+                completion(resultArray: friendInvitations)
+            }
+        }
+        
+    }
+
     
     //
     

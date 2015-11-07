@@ -13,9 +13,8 @@ class MyParseMethods {
     
     func updatingRequestFriends( objectUpdating: String ) {
         
-        let query = PFQuery(className:"User")
-        
         // query add request to friend
+        let query = PFQuery(className:"User")
         query.whereKey("userID", equalTo: FBSDKAccessToken.currentAccessToken().userID )
         query.getFirstObjectInBackgroundWithBlock({ (userObject: PFObject?, error: NSError?) -> Void in
             
@@ -31,8 +30,9 @@ class MyParseMethods {
                     }else {
                         
                         // query add invite from friend
-                        query.whereKey("userID", equalTo: objectUpdating )
-                        query.getFirstObjectInBackgroundWithBlock({ (friendObject: PFObject?, error: NSError?) -> Void in
+                        let queryInvite = PFQuery(className:"User")
+                        queryInvite.whereKey("userID", equalTo: objectUpdating )
+                        queryInvite.getFirstObjectInBackgroundWithBlock({ (friendObject: PFObject?, error: NSError?) -> Void in
                             
                             if error != nil {
                                 print(error?.localizedDescription)
@@ -76,9 +76,97 @@ class MyParseMethods {
         })
     }
     
+    func acceptFriend(objectAccept: String) {
+    
+        // query add friend 2
+        let query = PFQuery(className:"User")
+        query.whereKey("userID", equalTo: FBSDKAccessToken.currentAccessToken().userID )
+        query.getFirstObjectInBackgroundWithBlock({ (userObject: PFObject?, error: NSError?) -> Void in
+            
+            if error != nil {
+                print(error?.localizedDescription)
+            } else if let userObject = userObject {
+                
+                userObject.addObject( objectAccept , forKey: "idFriendsFB")
+                userObject.removeObject( objectAccept , forKey: "inviteFriend")
+                userObject.saveInBackgroundWithBlock({ (result: Bool, error: NSError?) -> Void in
+                    
+                    if error != nil {
+                        print("error RequestFriend == \(error?.localizedDescription)")
+                    }else {
+                        
+                        // query add friend 1
+                        let queryAdd = PFQuery(className:"User")
+                        queryAdd.whereKey("userID", equalTo: objectAccept )
+                        queryAdd.getFirstObjectInBackgroundWithBlock({ (friendObject: PFObject?, error: NSError?) -> Void in
+                            
+                            if error != nil {
+                                print(error?.localizedDescription)
+                            }else {
+                                
+                                friendObject!.addObject(FBSDKAccessToken.currentAccessToken().userID, forKey: "idFriendsFB")
+                                friendObject!.removeObject(FBSDKAccessToken.currentAccessToken().userID, forKey: "requestFriend")
+                                friendObject!.saveInBackground()
+                                // we can separate the method
+                            }
+                            
+                        })
+                    }
+                    
+                })
+                
+            }
+            
+        })
+
+    }
+    
+    func refuseFriend(objectRefuse: String) {
+    
+        // query refuse friend 2
+        let query = PFQuery(className:"User")
+        query.whereKey("userID", equalTo: FBSDKAccessToken.currentAccessToken().userID )
+        query.getFirstObjectInBackgroundWithBlock({ (userObject: PFObject?, error: NSError?) -> Void in
+            
+            if error != nil {
+                print(error?.localizedDescription)
+            } else if let userObject = userObject {
+                
+                userObject.removeObject( objectRefuse , forKey: "inviteFriend")
+                userObject.saveInBackgroundWithBlock({ (result: Bool, error: NSError?) -> Void in
+                    
+                    if error != nil {
+                        print("error RequestFriend == \(error?.localizedDescription)")
+                    }else {
+                        
+                        // query refuse friend 1
+                        let queryAdd = PFQuery(className:"User")
+                        queryAdd.whereKey("userID", equalTo: objectRefuse )
+                        queryAdd.getFirstObjectInBackgroundWithBlock({ (friendObject: PFObject?, error: NSError?) -> Void in
+                            
+                            if error != nil {
+                                print(error?.localizedDescription)
+                            }else {
+                                
+                                friendObject!.removeObject(FBSDKAccessToken.currentAccessToken().userID, forKey: "requestFriend")
+                                friendObject!.saveInBackground()
+                                // we can separate the method
+                            }
+                            
+                        })
+                    }
+                    
+                })
+                
+            }
+            
+        })
+
+    }
+    
     //MARK: - Completion Handler
     
-    func buttonsOfFriendsFollow( objectSearch: String, completion: (resultButton: Int) -> Void){
+    func buttonsOfFriendsFollow( objectSearch: String, completion: (resultButton: Int) -> Void) {
         
         // where 1 = follow, 2 = pending, 3 = unfollow
         

@@ -67,14 +67,17 @@ class FriendInvitationController: UIViewController, UITableViewDelegate, UITable
     
     @IBAction func acceptFriend(sender: MyButtonID) {
         
-        print( sender.idFriendFB )
+        print( "accept: \(sender.idFriendFB)" )
+        
+        self.methodsParse.acceptFriend( sender.idFriendFB )
         
     }
     
     @IBAction func refuseFriend(sender: MyButtonID) {
         
-        print( sender.idFriendFB )
+        print( "refuse: \(sender.idFriendFB)" )
         
+        self.methodsParse.refuseFriend( sender.idFriendFB )
     }
     
     //Mark: - UITableViewDelegate, UITableViewDataSource
